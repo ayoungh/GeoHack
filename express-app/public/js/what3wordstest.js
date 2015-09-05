@@ -57,18 +57,32 @@ jQuery('.lon, .lat').on('blur', function(){
       jQuery('.lon').val(lon);
       jQuery('.lat').val(lat);
 
-      console.log(url);
+      console.log('url:', url);
+      console.log(typeof url);
+      url = JSON.parse(url);
 
       var html = [
         '<div class="panel panel-default">'
           ,'<div class="panel-body">'
             ,url.plant
+            ,'<br/>'
+            ,url.temp
+            ,'<br/>'
+            ,url.rainfall
+            ,'<br/>'
+            ,url.Humidity
           ,'</div>'
         ,'</div>'
       ].join('');
 
+      console.log(html)
+      //jQuery(html).prepend('.row');
 
-      jQuery(html).append('.mapcontainer');
+      jQuery('.plant').val(url.plant);
+      jQuery('.temp').val(url.temp);
+      jQuery('.rainfall').val(url.rainfall);
+      jQuery('.humidity').val(url.Humidity);
+
 
 
     }

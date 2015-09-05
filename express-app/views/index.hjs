@@ -81,6 +81,70 @@
                   </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
 
+                <br/>
+                <br/>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        Plant:
+                      </span>
+                      <input type="text" class="form-control plant">
+                      <span class="input-group-btn">
+
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                </div><!-- /.row -->
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        Temp:
+                      </span>
+                      <input type="text" class="form-control temp">
+                      <span class="input-group-btn">
+
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                </div><!-- /.row -->
+
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      Rainfall:
+                    </span>
+                    <input type="text" class="form-control rainfall">
+                    <span class="input-group-btn">
+
+                    </span>
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+              </div><!-- /.row -->
+
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      Humidity:
+                    </span>
+                    <input type="text" class="form-control humidity">
+                    <span class="input-group-btn">
+
+                    </span>
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+
+              </div><!-- /.row -->
 
 
         <div class="mapcontainer">
