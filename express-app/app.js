@@ -92,7 +92,7 @@ app.get('/login/twitter',
   passport.authenticate('twitter'));
 
 app.get('/login/twitter/return',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
@@ -100,7 +100,7 @@ app.get('/login/twitter/return',
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('profile', { title: 'GeoHackRoofs', user: req.user });
   });
 
 
