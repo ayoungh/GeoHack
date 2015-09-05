@@ -89,7 +89,7 @@ app.get('/login', function(req, res){
 
 callbackF = function (apiResult){
   //console.dir(json);
-
+  console.log(apiResult);
 
 
 
