@@ -86,6 +86,20 @@ app.get('/login', function(req, res){
     res.render('login');
 });
 
+app.get('/what3words', function(req, res){
+
+  console.log(req);
+
+  if (req) {
+    
+  }
+
+    res.json({
+
+    });
+});
+
+
 
 //Twitter
 
@@ -108,56 +122,106 @@ app.get('/profile',
 //set defaults
 weather.defaults = {units:'metric', lang:'en', mode:'json'};
 
-var coords = {"lon":139,"lat":35};
+var coords = {"lon":50,"lat":10}; // carrots
+var coords = {"lon":41,"lat":0}; // kale
+var coords = {"lon":21,"lat":0}; // tomatoes
 
 weather.now(coords,function (err, json){
   console.dir(json);
-});
+  var apiResult = json;
 
 
-var plants = [
-  //Tomatoes,16,33,50,
-  {
-    'plant':'Tomatoes'
-    ,'temp':'16'
-    ,'rainfall':'33'
-    ,'Humidity':'50'
-  },
-  //Kale,13.5,55,50,
-  {
-    'plant':'Kale'
-    ,'temp':'13.5'
-    ,'rainfall':'55'
-    ,'Humidity':'50'
-  },
-  //Potatoes,11,17,30,
-  {
-    'plant':'Potatoes'
-    ,'temp':'11'
-    ,'rainfall':'17'
-    ,'Humidity':'30'
-  },
-  //Carrots,11,17,30,
-  {
-    'plant':'Carrots'
-    ,'temp':'11'
-    ,'rainfall':'17'
-    ,'Humidity':'30'
-  },
-  //Lettuce,18,77,70,
-  {
-    'plant':'Lettuce'
-    ,'temp':'18'
-    ,'rainfall':'77'
-    ,'Humidity':'70'
+
+  var plants = [
+    //Tomatoes,16,33,50,
+    {
+      'plant':'Tomatoes'
+      ,'temp':'26'
+      ,'rainfall':'0'
+      ,'Humidity':'88'
+    },
+    //Kale,13.5,55,50,
+    {
+      'plant':'Kale'
+      ,'temp':'27'
+      ,'rainfall':'14'
+      ,'Humidity':'59'
+    },
+    //Potatoes,11,17,30,
+    {
+      'plant':'Potatoes'
+      ,'temp':'15'
+      ,'rainfall':'17'
+      ,'Humidity':'35'
+    },
+    //Carrots,11,17,30,
+    {
+      'plant':'Carrots'
+      ,'temp':'16'
+      ,'rainfall':'17'
+      ,'Humidity':'24'
+    },
+    //Lettuce,18,77,70,
+    {
+      'plant':'Lettuce'
+      ,'temp':'19'
+      ,'rainfall':'77'
+      ,'Humidity':'30'
+    }
+      //Beetroot,11,17,30,
+      //Red peppers,20,60,80,
+  ];
+
+  // for (var i = 0; i < array.length; i++) {
+  //   array[i]
+  // }
+  function isEmpty(obj) {
+    for(var prop in obj) {
+          if(obj.hasOwnProperty(prop))
+              return false;
+      }
+
+      return true;
   }
-    //Beetroot,11,17,30,
-    //Red peppers,20,60,80,
-];
 
-// for (var i = 0; i < array.length; i++) {
-//   array[i]
-// }
+  function square(x) {return x*x;}
+
+  function getBestPlantIndex(apiResult, plants)
+  {
+  console.log(apiResult)
+  var tempC = ((typeof apiResult.main.temp != 'undefined'))?apiResult.main.temp-273.15:15;
+
+
+  var humidity = apiResult.main.humidity;
+
+  var rainfall = isEmpty(apiResult.rain)?0:Object.keys(apiResult.rain).map(function(key){
+    return apiResult.rain[key];
+})[0];
+
+  console.log(tempC)
+  console.log(100*rainfall)
+  console.log(humidity)
+
+  var bestScore = 99999999999;
+  var bestIndex = 0;
+  for(var i in plants)
+  {
+  var score = square(tempC-plants[i].temp)+ .2*square(rainfall-plants[i].rainfall) + .4*square(humidity - plants[i].Humidity);
+  console.log(i)
+  console.log(score)
+  if(score<bestScore)
+  {
+  bestScore = score;
+  bestIndex = i;
+  }
+  }
+  return bestIndex
+  }
+
+  console.log(plants[getBestPlantIndex(apiResult, plants)]);
+
+
+});
 
 
 

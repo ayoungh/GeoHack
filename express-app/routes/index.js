@@ -3,7 +3,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'GeoHackRoofs' });
+
+  res.render('index', { title: 'GeoHackRoofs', user: req.user });
+
 });
 
 module.exports = router;
