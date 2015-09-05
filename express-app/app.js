@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var weather = require('openweathermap');
 
 //CONFIG - SECRETS ETC
 var config = require('./config/config');
@@ -102,6 +103,16 @@ app.get('/profile',
   function(req, res){
     res.render('profile', { title: 'GeoHackRoofs', user: req.user });
   });
+
+//weather
+//set defaults
+weather.defaults = {units:'metric', lang:'en', mode:'json'};
+
+var coords = {"lon":139,"lat":35};
+
+weather.now(coords,function (err, json){
+  console.dir(json);
+});
 
 
 
