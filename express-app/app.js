@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //CONFIG - SECRETS ETC
-var config = require('./config');
+var config = require('./config/config');
 console.log(config.twitter);
 
 //ROUTES
