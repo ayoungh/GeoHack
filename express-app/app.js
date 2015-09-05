@@ -86,6 +86,20 @@ app.get('/login', function(req, res){
     res.render('login');
 });
 
+app.get('/what3words', function(req, res){
+
+  console.log(req);
+
+  if (req) {
+    
+  }
+
+    res.json({
+
+    });
+});
+
+
 
 //Twitter
 
