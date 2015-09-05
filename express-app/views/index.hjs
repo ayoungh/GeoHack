@@ -43,7 +43,23 @@
 
                 </BR>
 
-                <div class="what3words" style="display:none;">what3words: <span></span></div>
+                <div class="what3words" style="display:none;">what3words: <span class="label label-success"></span></div>
+
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        What3Words:
+                      </span>
+                      <input type="text" class="form-control whatwords">
+                      <span class="input-group-btn">
+                      <button class="btn btn-default getwhat" type="button">Go!</button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+                </div><!-- /.row -->
 
 
                 <div class="row">
@@ -67,8 +83,10 @@
 
 
 
-
+        <div class="mapcontainer">
         <div id="map" class="map"></div>
+        </div>
+
 
       </div>
 

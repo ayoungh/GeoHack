@@ -87,37 +87,9 @@ app.get('/login', function(req, res){
 });
 
 
+callbackF = function (apiResult){
+  //console.dir(json);
 
-
-
-//Twitter
-
-app.get('/login/twitter',
-  passport.authenticate('twitter'));
-
-app.get('/login/twitter/return',
-  passport.authenticate('twitter', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-  });
-
-app.get('/profile',
-  require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
-    res.render('profile', { title: 'GeoHackRoofs', user: req.user });
-  });
-
-//weather
-//set defaults
-weather.defaults = {units:'metric', lang:'en', mode:'json'};
-
-var coords = {"lon":50,"lat":10}; // carrots
-var coords = {"lon":41,"lat":0}; // kale
-var coords = {"lon":21,"lat":0}; // tomatoes
-
-weather.now(coords,function (err, json){
-  console.dir(json);
-  var apiResult = json;
 
 
 
@@ -177,7 +149,7 @@ weather.now(coords,function (err, json){
 
   function getBestPlantIndex(apiResult, plants)
   {
-  console.log(apiResult)
+  //console.log(apiResult)
   var tempC = ((typeof apiResult.main.temp != 'undefined'))?apiResult.main.temp-273.15:15;
 
 
@@ -187,17 +159,17 @@ weather.now(coords,function (err, json){
     return apiResult.rain[key];
 })[0];
 
-  console.log(tempC)
-  console.log(100*rainfall)
-  console.log(humidity)
+  //console.log(tempC)
+  //console.log(100*rainfall)
+  //console.log(humidity)
 
   var bestScore = 99999999999;
   var bestIndex = 0;
   for(var i in plants)
   {
   var score = square(tempC-plants[i].temp)+ .2*square(rainfall-plants[i].rainfall) + .4*square(humidity - plants[i].Humidity);
-  console.log(i)
-  console.log(score)
+  //console.log(i)
+  //console.log(score)
   if(score<bestScore)
   {
   bestScore = score;
@@ -208,9 +180,50 @@ weather.now(coords,function (err, json){
   }
 
   console.log(plants[getBestPlantIndex(apiResult, plants)]);
+  return(plants[getBestPlantIndex(apiResult, plants)]);
+}
 
 
+
+app.get('/API', function(req, res){
+  console.log(req.query);
+  var localResult = [];
+  weather.now(req.query,function (err, json){
+    //console.dir(json);
+    var apiResult = json;
+    res.json(callbackF(apiResult));
+
+
+  })
 });
+
+
+
+//Twitter
+
+app.get('/login/twitter',
+  passport.authenticate('twitter'));
+
+app.get('/login/twitter/return',
+  passport.authenticate('twitter', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  function(req, res){
+    res.render('profile', { title: 'GeoHackRoofs', user: req.user });
+  });
+
+//weather
+//set defaults
+weather.defaults = {units:'metric', lang:'en', mode:'json'};
+
+var coords = {"lon":50,"lat":10}; // carrots
+var coords = {"lon":41,"lat":0}; // kale
+var coords = {"lon":21,"lat":0}; // tomatoes
+
 
 
 
