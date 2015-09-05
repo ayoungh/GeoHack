@@ -16,13 +16,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">{{title}}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
+
+            {{#user}}
             <li><a href="/profile">Profile</a></li>
+            {{/user}}
+            {{^user}}
             <li><a href="/login/twitter">Log In with Twitter</a></li>
+            {{/user}}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -32,7 +37,13 @@
 
       <div class="starter-template">
         <h1>{{ title }}</h1>
+
         <div id="map" class="map"></div>
+
+        <p class="lead">rooftops here</p>
+
+        <div id="map" class="map"></div>
+
       </div>
 
     </div><!-- /.container -->

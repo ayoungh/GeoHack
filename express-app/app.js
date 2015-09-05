@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var weather = require('openweathermap');
 
 //CONFIG - SECRETS ETC
 var config = require('./config/config');
@@ -92,7 +93,7 @@ app.get('/login/twitter',
   passport.authenticate('twitter'));
 
 app.get('/login/twitter/return',
-  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  passport.authenticate('twitter', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   });
@@ -100,8 +101,63 @@ app.get('/login/twitter/return',
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
   function(req, res){
-    res.render('profile', { user: req.user });
+    res.render('profile', { title: 'GeoHackRoofs', user: req.user });
   });
+
+//weather
+//set defaults
+weather.defaults = {units:'metric', lang:'en', mode:'json'};
+
+var coords = {"lon":139,"lat":35};
+
+weather.now(coords,function (err, json){
+  console.dir(json);
+});
+
+
+var plants = [
+  //Tomatoes,16,33,50,
+  {
+    'plant':'Tomatoes'
+    ,'temp':'16'
+    ,'rainfall':'33'
+    ,'Humidity':'50'
+  },
+  //Kale,13.5,55,50,
+  {
+    'plant':'Kale'
+    ,'temp':'13.5'
+    ,'rainfall':'55'
+    ,'Humidity':'50'
+  },
+  //Potatoes,11,17,30,
+  {
+    'plant':'Potatoes'
+    ,'temp':'11'
+    ,'rainfall':'17'
+    ,'Humidity':'30'
+  },
+  //Carrots,11,17,30,
+  {
+    'plant':'Carrots'
+    ,'temp':'11'
+    ,'rainfall':'17'
+    ,'Humidity':'30'
+  },
+  //Lettuce,18,77,70,
+  {
+    'plant':'Lettuce'
+    ,'temp':'18'
+    ,'rainfall':'77'
+    ,'Humidity':'70'
+  }
+    //Beetroot,11,17,30,
+    //Red peppers,20,60,80,
+];
+
+// for (var i = 0; i < array.length; i++) {
+//   array[i]
+// }
 
 
 
