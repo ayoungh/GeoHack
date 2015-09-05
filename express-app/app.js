@@ -155,6 +155,10 @@ var plants = [
     //Red peppers,20,60,80,
 ];
 
+// for (var i = 0; i < array.length; i++) {
+//   array[i]
+// }
+
 
 
 
