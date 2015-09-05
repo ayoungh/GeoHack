@@ -115,6 +115,47 @@ weather.now(coords,function (err, json){
 });
 
 
+var plants = [
+  //Tomatoes,16,33,50,
+  {
+    'plant':'Tomatoes'
+    ,'temp':'16'
+    ,'rainfall':'33'
+    ,'Humidity':'50'
+  },
+  //Kale,13.5,55,50,
+  {
+    'plant':'Kale'
+    ,'temp':'13.5'
+    ,'rainfall':'55'
+    ,'Humidity':'50'
+  },
+  //Potatoes,11,17,30,
+  {
+    'plant':'Potatoes'
+    ,'temp':'11'
+    ,'rainfall':'17'
+    ,'Humidity':'30'
+  },
+  //Carrots,11,17,30,
+  {
+    'plant':'Carrots'
+    ,'temp':'11'
+    ,'rainfall':'17'
+    ,'Humidity':'30'
+  },
+  //Lettuce,18,77,70,
+  {
+    'plant':'Lettuce'
+    ,'temp':'18'
+    ,'rainfall':'77'
+    ,'Humidity':'70'
+  }
+    //Beetroot,11,17,30,
+    //Red peppers,20,60,80,
+];
+
+
 
 
 
