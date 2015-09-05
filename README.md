@@ -2,4 +2,6 @@
 
 Use the http://expressjs.com/starter/generator.html details
 
-DEBUG=myapp npm start
+## In terminal:
+
+DEBUG=express-app npm start

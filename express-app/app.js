@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //CONFIG - SECRETS ETC
 var config = require('./config');
+console.log(config.twitter);
 
 //ROUTES
 app.use('/', routes);
