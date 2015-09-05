@@ -42,8 +42,6 @@
 
         <p class="lead">rooftops here</p>
 
-        <div id="map" class="map"></div>
-
       </div>
 
     </div><!-- /.container -->
