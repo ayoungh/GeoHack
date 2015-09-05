@@ -1,1 +1,6 @@
-<h2>Profile page</h2>
+<h2>Profile page {{user.user}}</h2>
+
+ID: {{user.id}}<br/>
+Username: {{user.username}}<br/>
+Name: {{user.displayName}}<br/>
+email: {{user.emails[0].value}}<br/>
