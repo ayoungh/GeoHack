@@ -28,3 +28,5 @@ build/Release
 node_modules
 
 express-app/config/config.js
+
+express-app/config/config.js
