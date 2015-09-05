@@ -97,9 +97,9 @@ callbackF = function (apiResult){
     //Tomatoes,16,33,50,
     {
       'plant':'Tomatoes'
-      ,'temp':'26'
+      ,'temp':'29'
       ,'rainfall':'0'
-      ,'Humidity':'88'
+      ,'Humidity':'66'
     },
     //Kale,13.5,55,50,
     {
@@ -118,9 +118,9 @@ callbackF = function (apiResult){
     //Carrots,11,17,30,
     {
       'plant':'Carrots'
-      ,'temp':'16'
-      ,'rainfall':'17'
-      ,'Humidity':'24'
+      ,'temp':'26.5'
+      ,'rainfall':'7'
+      ,'Humidity':'75'
     },
     //Lettuce,18,77,70,
     {
@@ -159,9 +159,9 @@ callbackF = function (apiResult){
     return apiResult.rain[key];
 })[0];
 
-  //console.log(tempC)
-  //console.log(100*rainfall)
-  //console.log(humidity)
+  console.log(tempC)
+  console.log(100*rainfall)
+  console.log(humidity)
 
   var bestScore = 99999999999;
   var bestIndex = 0;
